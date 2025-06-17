@@ -1,3 +1,3 @@
 streamlit
 python-dotenv
-serpapi
+serpapi==2.0.0
