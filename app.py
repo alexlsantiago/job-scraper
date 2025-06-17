@@ -3,7 +3,8 @@ import os
 import zipfile
 import re
 import streamlit as st
-from serpapi import GoogleSearch
+from serpapi.google_search import GoogleSearch
+
 
 API_KEY = st.secrets.get("SERPAPI_KEY")
 
