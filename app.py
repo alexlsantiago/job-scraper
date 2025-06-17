@@ -2,12 +2,14 @@ import streamlit as st
 import os
 import zipfile
 import re
-
+import streamlit as st
 from serpapi import GoogleSearch
 
-import streamlit as st
-API_KEY = st.secrets["SERPAPI_KEY"]
+API_KEY = st.secrets.get("SERPAPI_KEY")
 
+if not API_KEY:
+    st.error("❌ SERPAPI_KEY not found. Add it in Streamlit secrets.")
+    st.stop()
 
 # --- Streamlit Config + Matching Dark Theme ---
 st.set_page_config(page_title="Job Finder", layout="centered")
