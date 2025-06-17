@@ -1,4 +1,5 @@
 streamlit
 python-dotenv
-serpapi>=2.0.0
+git+https://github.com/serpapi/serpapi-python.git
+
 
