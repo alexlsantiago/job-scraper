@@ -2,12 +2,12 @@ import streamlit as st
 import os
 import zipfile
 import re
-from dotenv import load_dotenv
+
 from serpapi import GoogleSearch
 
-# Load the SERPAPI key
-load_dotenv()
-API_KEY = os.getenv("SERPAPI_KEY")
+import streamlit as st
+API_KEY = st.secrets["SERPAPI_KEY"]
+
 
 # --- Streamlit Config + Matching Dark Theme ---
 st.set_page_config(page_title="Job Finder", layout="centered")
