@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 
-def scrape_jobs(query):
+def scrape_jobs(query, location):
     api_key = st.secrets.get("SERPAPI_KEY")
     if not api_key:
         st.error("Missing SerpAPI key in secrets.")
@@ -10,6 +10,7 @@ def scrape_jobs(query):
     params = {
         "engine": "google_jobs",
         "q": query,
+        "location": location,
         "hl": "en",
         "api_key": api_key
     }
@@ -17,7 +18,6 @@ def scrape_jobs(query):
     try:
         res = requests.get("https://serpapi.com/search", params=params)
         data = res.json()
-
         return data.get("jobs_results", [])
     except Exception as e:
         st.error(f"Scraping failed: {e}")
