@@ -6,7 +6,7 @@ from scraper import scrape_jobs
 
 st.set_page_config(page_title="Job Scraper AI", layout="centered")
 
-st.title("Job Scraper AI")
+st.markdown("<h1 style='margin-bottom: 0.5em;'>Job Scraper AI</h1>", unsafe_allow_html=True)
 st.markdown("Search and download job listings from Google Jobs.")
 
 query = st.text_input("Job title or keywords", placeholder="e.g. Software Engineering Intern 2026")
