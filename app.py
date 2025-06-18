@@ -6,7 +6,9 @@ from scraper import scrape_jobs
 
 st.set_page_config(page_title="Job Scraper AI", layout="centered")
 
-st.markdown("<h1 style='margin-bottom: 0.5em;'>Job Scraper AI</h1>", unsafe_allow_html=True)
+st.markdown("""
+    <div style='font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5em;'>Job Scraper AI</div>
+""", unsafe_allow_html=True)
 st.markdown("Search and download job listings from Google Jobs.")
 
 query = st.text_input("Job title or keywords", placeholder="e.g. Software Engineering Intern 2026")
@@ -37,7 +39,7 @@ if st.session_state.jobs:
     buffer.seek(0)
 
     st.download_button(
-        label="⬇️ Download Jobs as ZIP",
+        label="Download Jobs as ZIP",
         data=buffer,
         file_name="job_listings.zip",
         mime="application/zip"
