@@ -47,8 +47,14 @@ if st.session_state.jobs:
 
     # Show jobs
     for job in st.session_state.jobs:
-        st.markdown(f"### [{job.get('title')}]({job.get('link')})")
-        st.markdown(f"**Company:** {job.get('company', 'N/A')}")
-        st.markdown(f"**Location:** {job.get('location', 'N/A')}")
-        st.markdown(f"**Summary:** {job.get('snippet', 'No summary available')}")
+        title = job.get("title", "Untitled")
+        link = job.get("external_link", job.get("link", "#"))
+        company = job.get("company", "N/A")
+        location = job.get("location", "N/A")
+        summary = job.get("snippet", "No summary available")
+
+        st.markdown(f"### [{title}]({link})")
+        st.markdown(f"**Company:** {company}")
+        st.markdown(f"**Location:** {location}")
+        st.markdown(f"**Summary:** {summary}")
         st.markdown("---")
