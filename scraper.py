@@ -19,30 +19,20 @@ def scrape_jobs(query, location):
         res = requests.get("https://serpapi.com/search", params=params)
         data = res.json()
         raw_jobs = data.get("jobs_results", [])
-        
+
         jobs = []
         for job in raw_jobs:
-            # Try to extract a usable job link
-            apply_link = None
-
-            # Option 1: SerpAPI detected extensions
-            if "detected_extensions" in job:
-                apply_link = job["detected_extensions"].get("apply_link")
-
-            # Option 2: Use the link field directly if it exists
-            if not apply_link:
-                apply_link = job.get("link")
-
+            # Prefer apply_link if available, otherwise fallback to 'link'
+            apply_link = job.get("detected_extensions", {}).get("apply_link") or job.get("link")
             jobs.append({
                 "title": job.get("title", "No title"),
-                "company": job.get("company_name", "Not available"),
-                "location": job.get("location", "Not available"),
-                "snippet": job.get("description", "Not available"),
-                "link": apply_link or "#"
+                "company": job.get("company_name", "N/A"),
+                "location": job.get("location", "N/A"),
+                "snippet": job.get("description", "No summary available"),
+                "link": apply_link
             })
 
         return jobs
-
     except Exception as e:
         st.error(f"Scraping failed: {e}")
         return []
