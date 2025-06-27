@@ -12,7 +12,7 @@ st.markdown("""
 st.markdown("Search and download job listings from Google Jobs.")
 
 query = st.text_input("Job title or keywords", placeholder="e.g. Software Engineering Intern 2026")
-location = st.text_input("Location", placeholder="e.g. New York or remote")
+location = st.text_input("Location", placeholder="e.g. New York or Austin, TX")
 
 if "jobs" not in st.session_state:
     st.session_state.jobs = []
